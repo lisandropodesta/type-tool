@@ -1,4 +1,4 @@
-is-type
+type-tool
 =======
 
 Flexible type checking including isUndefined, isNull, isBoolean, isNumber, isDate, isString, isRegExp, isArray, isArguments, isFunction and isObject.
