@@ -1,0 +1,18 @@
+{
+  "author": {
+    "name": "Lisandro Podestá"
+  },
+  "name": "type-tool",
+  "repo": "lisandropodesta/type-tool",
+  "description": "Flexible type checking",
+  "version": "0.0.1",
+  "keywords": ["type", "typeof", "tool"],
+  "dependencies": {
+  },
+  "development": {
+  },
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
