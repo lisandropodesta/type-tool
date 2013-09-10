@@ -9,17 +9,17 @@ Flexible type checking including isUndefined, isNull, isBoolean, isNumber, isDat
 
 Determines whether a value is of a specific type.
 
- * isUndefined( value )
- * isNull( value )
- * isBoolean( value )
- * isNumber( value )
- * isDate( value )
- * isString( value )
- * isRegExp( value )
- * isArray( value )
- * isArguments( value )
- * isFunction( value )
- * isObject( value )
+ * .isUndefined( value )
+ * .isNull( value )
+ * .isBoolean( value )
+ * .isNumber( value )
+ * .isDate( value )
+ * .isString( value )
+ * .isRegExp( value )
+ * .isArray( value )
+ * .isArguments( value )
+ * .isFunction( value )
+ * .isObject( value )
 
 ```javascript
 var type = require( "type-tool" );
@@ -28,9 +28,9 @@ if ( type.isFunction( value ) ) {
 }
 ```
 
-### name( value )
+### .name( value )
 
-Returns type name of value. Possible results are: "undefined", "null", "boolean", "number", "date", "string", "regexp", "array", "arguments", "function" and "object"
+Returns type name of value. Possible results are: "undefined", "null", "boolean", "number", "date", "string", "regexp", "array", "arguments", "function" and "object".
 
 ```javascript
 var type = require( "type-tool" );
@@ -39,7 +39,7 @@ if ( type.name( value ) == "array" ) {
 }
 ```
 
-### get( value )
+### .get( value )
 
 Returns type information of value including name and specific type flags.
 

@@ -28,22 +28,19 @@ var TYPES = {
 //
 // Create individual type testing functions
 //
-(function () {
+function make_fn( n ) {
+  var
+    fun_name = "is" + TYPES[ n ],
+    type_name = TYPES[ n ].toLowerCase();
 
-  function make_fn( n ) {
-    var
-      fun_name = "is" + TYPES[ n ],
-      type_name = TYPES[ n ].toLowerCase();
-
-    Type.prototype[ fun_name ] = function ( v ) {
-      return type_name === Type.prototype.name( v );
-    }
+  Type.prototype[ fun_name ] = function ( v ) {
+    return type_name === Type.prototype.name( v );
   }
+}
 
-  for ( var n in TYPES ) {
-    make_fn( n );
-  }
-})();
+for ( var n in TYPES ) {
+  make_fn( n );
+}
 
 //
 // Constructor
