@@ -22,7 +22,7 @@ Determines whether a value is of a specific type.
  * .isObject( value )
 
 ```javascript
-var type = require( "type-tool" );
+var type = require( 'type-tool' );
 if ( type.isFunction( value ) ) {
   // value is a function
 }
@@ -30,11 +30,11 @@ if ( type.isFunction( value ) ) {
 
 ### .name( value )
 
-Returns type name of value. Possible results are: "undefined", "null", "boolean", "number", "date", "string", "regexp", "array", "arguments", "function" and "object".
+Returns type name of value. Possible results are: 'undefined', 'null', 'boolean', 'number', 'date', 'string', 'regexp', 'array', 'arguments', 'function' and 'object'.
 
 ```javascript
-var type = require( "type-tool" );
-if ( type.name( value ) == "array" ) {
+var type = require( 'type-tool' );
+if ( type.name( value ) == 'array' ) {
   // value is an array
 }
 ```
@@ -44,8 +44,8 @@ if ( type.name( value ) == "array" ) {
 Returns type information of value including name and specific type flags.
 
 ```javascript
-var type = require( "type-tool" );
-var ti = type.get( [] ); // -> ti == { name: "array", isArray: true }
+var type = require( 'type-tool' );
+var ti = type.get( [] ); // -> ti == { name: 'array', isArray: true }
 
 ti = type.get( value );
 if ( ti.isArray ) {

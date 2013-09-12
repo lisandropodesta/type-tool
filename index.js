@@ -15,17 +15,17 @@ module.exports = Type.prototype;
  */
 
 var TYPES = {
-  "[object Undefined]": "Undefined",
-  "[object Null]": "Null",
-  "[object Boolean]": "Boolean",
-  "[object Number]": "Number",
-  "[object Date]": "Date",
-  "[object String]": "String",
-  "[object RegExp]": "RegExp",
-  "[object Array]": "Array",
-  "[object Arguments]": "Arguments",
-  "[object Function]": "Function",
-  "[object Object]": "Object"
+  '[object Undefined]': 'Undefined',
+  '[object Null]': 'Null',
+  '[object Boolean]': 'Boolean',
+  '[object Number]': 'Number',
+  '[object Date]': 'Date',
+  '[object String]': 'String',
+  '[object RegExp]': 'RegExp',
+  '[object Array]': 'Array',
+  '[object Arguments]': 'Arguments',
+  '[object Function]': 'Function',
+  '[object Object]': 'Object'
 };
 
 /**
@@ -37,7 +37,7 @@ var TYPES = {
 
 function make_fn( n ) {
 
-  var fun_name = "is" + TYPES[ n ];
+  var fun_name = 'is' + TYPES[ n ];
   var type_name = TYPES[ n ].toLowerCase();
 
   Type.prototype[ fun_name ] = function ( v ) {
@@ -69,11 +69,11 @@ function Type() {
 function getTypeName( v ) {
 
   if ( null === v ) {
-    return "Null";
+    return 'Null';
   }
 
   if ( undefined === v ) {
-    return "Undefined";
+    return 'Undefined';
   }
 
   var name = TYPES[ toString.call( v ) ];
@@ -100,7 +100,7 @@ Type.prototype.get = function ( v ) {
   var name = getTypeName( v );
   var ret = {};
   ret.name = name.toLowerCase();
-  ret[ "is" + name ] = true;
+  ret[ 'is' + name ] = true;
   return ret;
 }
 
