@@ -1,16 +1,19 @@
-//
-// Exports
-//
-module.exports = Type.prototype;
+/**
+ * External references
+ */
 
-//
-// toString
-//
 var toString = Object.prototype.toString;
 
-//
-// Types mapping
-//
+/**
+ * Exports
+ */
+
+module.exports = Type.prototype;
+
+/**
+ * Types mapping
+ */
+
 var TYPES = {
   "[object Undefined]": "Undefined",
   "[object Null]": "Null",
@@ -25,13 +28,17 @@ var TYPES = {
   "[object Object]": "Object"
 };
 
-//
-// Create individual type testing functions
-//
+/**
+ * Create individual type testing functions such as isArray, isFunction, and so on
+ *
+ * @param {string} n Name of the type
+ * @api private
+ */
+
 function make_fn( n ) {
-  var
-    fun_name = "is" + TYPES[ n ],
-    type_name = TYPES[ n ].toLowerCase();
+
+  var fun_name = "is" + TYPES[ n ];
+  var type_name = TYPES[ n ].toLowerCase();
 
   Type.prototype[ fun_name ] = function ( v ) {
     return type_name === Type.prototype.name( v );
@@ -42,18 +49,24 @@ for ( var n in TYPES ) {
   make_fn( n );
 }
 
-//
-// Constructor
-//
+/**
+ * Type class function
+ *
+ * @api public
+ */
+
 function Type() {
 }
 
-//
-// Gets capitalized type name
-//
+/**
+ * Gets capitalized type name
+ *
+ * @param {object} v Value to check type
+ * @return {string} Capitalized type name
+ * @api private
+ */
+
 function getTypeName( v ) {
-  var
-    name;
 
   if ( null === v ) {
     return "Null";
@@ -63,7 +76,7 @@ function getTypeName( v ) {
     return "Undefined";
   }
 
-  name = TYPES[ toString.call( v ) ];
+  var name = TYPES[ toString.call( v ) ];
 
   if ( !name )
   {
@@ -74,23 +87,31 @@ function getTypeName( v ) {
   return name;
 }
 
-//
-// Get type information
-//
-Type.prototype.get = function ( v ) {
-  var
-    name,
-    ret = {};
+/**
+ * Gets type information
+ *
+ * @param {object} v Value to check type
+ * @return {object} Type information object
+ * @api public
+ */
 
-  name = getTypeName( v );
+Type.prototype.get = function ( v ) {
+
+  var name = getTypeName( v );
+  var ret = {};
   ret.name = name.toLowerCase();
   ret[ "is" + name ] = true;
   return ret;
 }
 
-//
-// Get type as string
-//
+/**
+ * Gets type as lowercase string
+ *
+ * @param {object} v Value to check type
+ * @return {object} Type name
+ * @api public
+ */
+
 Type.prototype.name = function( v ) {
   return getTypeName( v ).toLowerCase();
 }
