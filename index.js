@@ -5,12 +5,6 @@
 var toString = Object.prototype.toString;
 
 /**
- * Exports
- */
-
-module.exports = Type.prototype;
-
-/**
  * Types mapping
  */
 
@@ -29,33 +23,26 @@ var TYPES = {
 };
 
 /**
+ * Exports
+ */
+module.exports.get = typeGet;
+module.exports.name = typeName;
+
+for ( var n in TYPES ) {
+  module.exports[ 'is' + TYPES[ n ] ] = make_fn( TYPES[ n ].toLowerCase() );
+}
+
+/**
  * Create individual type testing functions such as isArray, isFunction, and so on
  *
  * @param {string} n Name of the type
  * @api private
  */
 
-function make_fn( n ) {
-
-  var fun_name = 'is' + TYPES[ n ];
-  var type_name = TYPES[ n ].toLowerCase();
-
-  Type.prototype[ fun_name ] = function ( v ) {
-    return type_name === Type.prototype.name( v );
+function make_fn( type_name ) {
+  return function ( v ) {
+    return type_name === typeName( v );
   }
-}
-
-for ( var n in TYPES ) {
-  make_fn( n );
-}
-
-/**
- * Type class function
- *
- * @api public
- */
-
-function Type() {
 }
 
 /**
@@ -66,8 +53,7 @@ function Type() {
  * @api private
  */
 
-function getTypeName( v ) {
-
+function typeNameCapitalized( v ) {
   if ( null === v ) {
     return 'Null';
   }
@@ -77,7 +63,6 @@ function getTypeName( v ) {
   }
 
   var name = TYPES[ toString.call( v ) ];
-
   if ( !name )
   {
     name = typeof v;
@@ -95,9 +80,8 @@ function getTypeName( v ) {
  * @api public
  */
 
-Type.prototype.get = function ( v ) {
-
-  var name = getTypeName( v );
+function typeGet( v ) {
+  var name = typeNameCapitalized( v );
   var ret = {};
   ret.name = name.toLowerCase();
   ret[ 'is' + name ] = true;
@@ -112,6 +96,6 @@ Type.prototype.get = function ( v ) {
  * @api public
  */
 
-Type.prototype.name = function( v ) {
-  return getTypeName( v ).toLowerCase();
+function typeName( v ) {
+  return typeNameCapitalized( v ).toLowerCase();
 }
